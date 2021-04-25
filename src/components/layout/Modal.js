@@ -10,10 +10,11 @@ const Modal = (props) => {
   const [modalState, setModalState] = useState();
   const [locationInfo, setLocationInfo] = useState();
   const [counter, setCounter] = useState(0);
-
   const modalRef = useRef();
-
   const minWidth = window.matchMedia("(max-width: 600px)");
+  const handleModalState = (target) => setModalState(target);
+  const handleLocationChange = (e) => setLocationInfo(e.target.value);
+  const handleMatches = (text) => setLocationInfo(text);
 
   const handleCounter = (type) => {
     if (type === "increase") setCounter(counter + 1);
@@ -54,31 +55,19 @@ const Modal = (props) => {
     props.closeModal();
   }, [props]);
 
-  const handleModalState = (target) => setModalState(target);
-  const handleLocationChange = (e) => setLocationInfo(e.target.value);
-  const handleMatches = (text) => setLocationInfo(text);
-
   const matches = modalState === "location" && (
     <div className="matches">
       {data.map((stay, index) => {
-        const city = stay.city,
-          country = stay.country;
-
         let filterText = locationInfo && locationInfo.replace(",", "");
-
         let regText = new RegExp(filterText, "i");
 
-        if (regText.test(`${city} ${country}`)) {
-          return (
-            <SearchMatches
-              key={index}
-              text={`${city}, ${country}`}
-              handleMatches={handleMatches}
-            />
-          );
-        }
-
-        return null;
+        return regText.test(`${stay.city} ${stay.country}`) && (
+          <SearchMatches
+            key={index}
+            text={`${stay.city}, ${stay.country}`}
+            handleMatches={handleMatches}
+          />
+        );
       })}
     </div>
   );
