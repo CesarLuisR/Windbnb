@@ -9,6 +9,11 @@
   height: 300px;
   object-fit: cover;
   border-radius: 24px;
+  transition: transform 0.3s;
+}
+
+.stay img:hover {
+  transform: scale(1.03);
 }
 
 .stay-info {
