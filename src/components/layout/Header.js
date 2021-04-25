@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const [render, setRender] = useState();
   const [modalState, setModalState] = useState(null);
-  
   const data = useSelector((store) => store.searchInfoReducer.data);
 
   const handleModalState = (e) => {

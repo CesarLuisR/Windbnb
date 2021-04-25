@@ -6,23 +6,13 @@ import { useDispatch } from "react-redux";
 const CustomSearch = (props) => {
   const locationRef = useRef();
   const guestRef = useRef();
-
   const [inputText, setInputText] = useState();
-
   const dispatch = useDispatch();
-
   const minWidth = window.matchMedia("(max-width: 600px)");
-
   const handleInputText = (e) => setInputText(e.target.value);
 
   const handleSearch = () => {
-    dispatch(
-      searchInfoAction({
-        location: inputText,
-        guests: props.counter,
-      })
-    );
-
+    dispatch(searchInfoAction({ location: inputText, guests: props.counter }));
     props.handleClose();
   };
 
