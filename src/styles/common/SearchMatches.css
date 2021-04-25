@@ -1,0 +1,17 @@
+.search-matches {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.room-icon {
+  color: #4f4f4f;
+}
+
+.search-matches__text {
+  font-family: Mulish;
+  font-size: 14px;
+  line-height: 18px;
+  color: #4f4f4f;
+  margin-left: 10px;
+}
